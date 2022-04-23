@@ -1,0 +1,17 @@
+function cb_auto_core_update_send_email ( $send, $type, $core_update, $result ) {
+	if ( !empty( $type ) && $type == 'success' ) {
+		// don't send email
+		return false; 
+	}
+		// use default settings
+		return $send; 
+	}
+}
+add_filter( 'auto_core_update_send_email', 'cb_auto_core_update_send_email', 10, 4 );
+apply_filters( 'send_core_update_notification_email', '__return_true' );
+apply_filters( 'automatic_updates_send_debug_email', '__return_true' );
+
+#Some WP-CLI Commands
+wp login as username --launch --allow-root
+wp search-replace 'https://www.rhinosskishack.com' 'https://rhinos.bwpsites.com' --skip-columns=guid
+wp search-replace 'http://sfcustomchiro.com' 'https://sfcustomchiro.com/' --skip-columns=guid
